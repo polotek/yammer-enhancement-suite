@@ -4,10 +4,12 @@
   "manifest_version": 2,
   "description": "Makes Yams Even More Tasty",
   "browser_action": {
-    "default_icon": "icon.png",
+    "default_icon": "images/icon.png",
     "default_popup": "popup.html"
   },
   "permissions": [
-    "http://api.flickr.com/"
-  ]
+    "http://api.flickr.com/",
+    "https://www.staging.yammer.com/"
+  ],
+  "background": "scripts/background.js"
 }
