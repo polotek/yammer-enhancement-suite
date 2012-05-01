@@ -13,5 +13,16 @@
   ],
   "background": {
     "scripts": ["scripts/background.js"]
-  }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.staging.yammer.com/*",
+        "https://www.thunderdome.yammer.com/*",
+        "https://www.yammer.com/*"
+      ],
+      "css": [],
+      "js": ["scripts/jquery.min.js", "scripts/yammer.js"]
+    }
+  ]
 }
