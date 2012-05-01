@@ -11,5 +11,7 @@
     "http://api.flickr.com/",
     "https://www.staging.yammer.com/"
   ],
-  "background": "scripts/background.js"
+  "background": {
+    "scripts": ["scripts/background.js"]
+  }
 }
