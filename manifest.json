@@ -21,8 +21,13 @@
         "https://www.thunderdome.yammer.com/*",
         "https://www.yammer.com/*"
       ],
-      "css": [],
-      "js": ["scripts/jquery.min.js", "scripts/yammer.js"]
+      "css": ["stylesheets/yammer.css"],
+      "js": [
+        "scripts/jquery.min.js", 
+        "scripts/groupstorage.js", 
+        "scripts/groupreorderer.js",
+        "scripts/yammer.js"
+      ]
     }
   ]
 }
