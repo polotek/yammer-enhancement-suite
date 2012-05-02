@@ -1,0 +1,20 @@
+.group-pin-icon {
+	/* hackeroo the background position because we're too lazy to remove the existing group icon */	
+	background-position: 0 0 !important;
+	/* load the pin with base64 encoding things */
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAu5JREFUeNqkU0toE1EUPfPmk8ykTT9p2mi/IoqtUtSi+EWKLlyIUPzUlSiiKIgrFwXdCC5dKXaroggqCtoiVJGKIogK1k+LFtOmNX7SNNOkTTKTzGSed6K2FOzKxxveMHPvufece57wfTqHeCaP88/H8D6WgcwEeCQGzgEHHMfbFnd0NAeHZ/L2oPvNJ4tw16JSpXgyLLzaBOBhwrCvCwL2eESGCq+Ed7E0up6EZ4OkfyRWO5x3CRBOWA73Ph9PDq2oUh80V/lw8VUUfV90JE17QYBT9Jx2OOoFal+i0l9T5ujtofjAt+koxpImaks92L+2ej4AcVudKzg9lFgX8nmwob4UNz9MoMQjQmGsfXgyu6/g8DsdK6pAeqA5qM0DEBVR2NHeVFE5nsoPhUrlxqNtIV/WKuDup0nUaIpmO87ZM1sbBjY1lOdI4/HRKRM1vj8iEl8noCnd62v9nQ1lnsMjSfPzy+gMP7Q6hEpVBqmPGavQGknluknAy2++py88DuvKbAfUNrccJ7s8oPYOJwyx3q/c7wtP1TeWeYMHWqpx5d0PGp2EWx8ndtjghQ21ZbviaWuAcm+4AEI0lQO1BdoYjGcxkckv7RtJXFNFaTO9I5IySE6h+N/1ANF95PdIB+91rowVOzDtAuJZC7phI6BJaK2piHydNiuuDvykYAbGfoMvrVQTFHvCsvmdosv+UhghQUgHF7k4X9JgSyyTb3IcwK+JrjPNoE/xEqXXQZ/0oi+sCxlrDoHRqCFRsnu6tfSstTusm1rIr7giXloW0A6tCvpyYyljOyl/8NiaxWXbmspnO2Au/wJVy+YdjOgG+iPJp6osPiuRxXUk7ikyzv1KTeoVBSYPTmSPLAmom/a2BOco5GyOWNrClykD0WkTtoN+ryj0WHShdNNCnV8xZYmd21jn3/k5YUgSEz7O5AtzAG9/phEhi7rGcfnQTtNoocoMqs3QWO6FIrEPk7J9clg3rjp8vvcFzjn+Z/0SYABCFUsGe6Mj8QAAAABJRU5ErkJggg==) !important;
+}
+
+.nav-pinned-header span {
+	margin: 6px 0 6px 5px;
+	line-height: 12px;
+	padding-bottom: 4px;
+	height: 12px;
+	display: block;
+}
+
+.nav-pinned-header-sep {
+	border-bottom: 1px solid #ddd;
+	margin-top: 4px !important;
+	margin-bottom: 4px !important;
+}
