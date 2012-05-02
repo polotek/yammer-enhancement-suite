@@ -15,22 +15,34 @@ $(function() {
 		return "drafts_" + networkId + ":" + currentFeedId() + ":" + $(el).parents(".yj-message-form-container").find("form").data("yamjs-id");
 	}
 
-	function keyPressHandler(event) {
-		var target = event.target
-		var draftKey = draftStorageKey(target)
+	function removeDraft(key) {
+		console.log("Removing draft for key", key);
+		localStorage.removeItem(key);
+	}
 
-		if (event.shiftKey && event.keyCode === 13) {
-			localStorage.removeItem(draftKey)
+	function saveDraft(key, value) {
+		console.log("Saving draft for key", key);
+		localStorage[key] = value
+	}
+
+	function keyPressHandler(event) {
+		var target = event.target;
+		var draftKey = draftStorageKey(target);
+
+		if (event.keyCode === 16) {
+			// IGNOOORE
+		} else if (event.shiftKey && event.keyCode === 13) {
+			removeDraft(draftKey);
 		} else {
-			localStorage[draftKey] = $(target).val()
-			console.log("keypress", event)
+			saveDraft(draftKey, $(target).val());
+			console.log("keypress", event);
 		}
 	}
 
 	$("body").on("click", "a.yj-message-form-submit", function(event) {
-		var target = event.target
-		var draftKey = draftStorageKey(target)
-		localStorage.removeItem(draftKey)
+		var target = event.target;
+		var draftKey = draftStorageKey(target);
+		removeDraft(draftKey);
 	})
 
 	$("body").on("focus", "textarea", function() {
@@ -38,6 +50,7 @@ $(function() {
 		console.log("focused " + draftKey)
 		var saved = localStorage[draftKey]
 		if (saved) {
+			console.log("Found draft for key", draftKey);
 			$(this).val(saved)
 		}
 		$(this).on("keyup", keyPressHandler)
