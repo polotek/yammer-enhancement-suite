@@ -5,8 +5,10 @@
   "description": "Makes Yams Even More Tasty",
   "browser_action": {
     "default_icon": "images/icon.png",
-    "default_title": "some title",
-    "default_popup": "settings.html"
+    "default_title": "Enhance the Yammer experience"
+  },
+  "icons": {
+    "128": "images/Logo_128x128.png"
   },
   "permissions": [
     "tabs"
