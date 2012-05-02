@@ -1,5 +1,6 @@
 /* Stores groups in localStorage, hooah */
 (function() {
+
 	var GroupStorage = function() {},
 		storageKey = 'yammerEnhance.groups';
 
@@ -41,7 +42,7 @@
 			this.saveToStorage();
 		}
 	};
-
+	
 	window.yammerEnhance.GroupStorage = new GroupStorage();
 
 })();

@@ -1,11 +1,7 @@
 /* group reordermatron! */
-
 (function($) {
 	
-	$(window).on('enhance.settingsLoaded', function(event, settings) {
-
-		if(!settings.removeGettingStarted)
-			return;
+	$(function() { 
 
 		var GroupPinner = function() { 
 				this.init() 
@@ -94,11 +90,9 @@
 				// not entirely sure what data does when I remove the data.. so yeah. explicit true pls.
 				return navIcon.data('pinned') === true;
 			}
-		};
-
-	});
+	};
 
 	window.yammerEnhance.GroupPinner = new GroupPinner();
 
-
+	});
 })(jQuery);

@@ -4,11 +4,7 @@
 		return $('#getting-started-wrapper');
 	}
 
-	$(window).on('enhance.settingsLoaded', function(event, settings) {
-
-		if(!settings.removeGettingStarted)
-			return;
-
+	$(function() { 
 		getWrapper().remove();
 
 		// sometimes this isn't around when on document.ready
