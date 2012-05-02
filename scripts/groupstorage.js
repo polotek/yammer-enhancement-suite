@@ -1,5 +1,3 @@
-window.yammerEnhance = {};
-
 /* Stores groups in localStorage, hooah */
 (function() {
 	var GroupStorage = function() {},

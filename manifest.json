@@ -3,10 +3,10 @@
   "version": "1.0",
   "manifest_version": 2,
   "description": "Makes Yams Even More Tasty",
-  "page_action": {
+  "options_page": "settings.html",
+  "browser_action": {
     "default_icon": "images/icon.png",
-    "default_title": "some title",
-    "default_popup": "popup.html"
+    "default_title": "some title"
   },
   "permissions": [
     "tabs"
@@ -24,9 +24,10 @@
       "css": ["stylesheets/yammer.css"],
       "js": [
         "scripts/jquery.min.js", 
+        "scripts/yammer.js",
         "scripts/groupstorage.js", 
         "scripts/groupreorderer.js",
-        "scripts/yammer.js"
+        "scripts/saveasdraft.js"
       ]
     }
   ]

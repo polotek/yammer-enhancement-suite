@@ -1,3 +1,7 @@
-/* jquery is already loaded at this point */
+window.yammerEnhance = {};
+
 $(function() {
+	chrome.extension.sendRequest({action: "settings"}, function(response) {
+		yammerEnhance.settings = response
+	});
 })
