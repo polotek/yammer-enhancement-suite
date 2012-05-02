@@ -26,8 +26,9 @@
         "scripts/jquery.min.js", 
         "scripts/yammer.js",
         "scripts/groupstorage.js", 
-        "scripts/groupreorderer.js",
-        "scripts/saveasdraft.js"
+        "scripts/group_pinner.js",
+        "scripts/saveasdraft.js",
+        "scripts/removegettingstarted.js"
       ]
     }
   ]

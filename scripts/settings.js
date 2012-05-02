@@ -4,8 +4,11 @@
 
 $(function() {
   $("#saveAsDraft").attr('checked', window.localStorage["saveAsDraft"] == "true");
+  $("#removeGettingStarted").attr('checked', window.localStorage["removeGettingStarted"] == "true");
+
   $("#saveAsDraft").click(function() {
     window.localStorage["saveAsDraft"] = $(this).is(':checked')
+    window.localStorage["removeGettingStarted"] = $(this).is(':checked')
   })
 })
 
