@@ -72,8 +72,8 @@
 				var navIcon = parent.find('.nav-icon').addClass('group-pin-icon');
 
 				navIcon.on('click', function() {
-					event.preventDefault();
 					self[!self.isSelected(navIcon) ? 'pinGroup' : 'unpinGroup'](parent);
+					return false;
 				});
 
 			}).on('mouseout', function() {
