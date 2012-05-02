@@ -2,8 +2,17 @@ $(function() {
 
 	var networkId = $(".uni-current-network.yj-clearfix").data("yj-network-id")
 
+	function currentFeedId() {
+		var feedId = "";
+		var match = location.hash.match(/feedId=(\d+)/);
+		if (match) {
+			feedId = match[1];
+		}
+		return feedId;
+	}
+
 	function draftStorageKey(el) {
-		return "drafts_" + networkId + ":" + $(el).parents(".yj-message-form-container").find("form").data("yamjs-id")
+		return "drafts_" + networkId + ":" + currentFeedId() + ":" + $(el).parents(".yj-message-form-container").find("form").data("yamjs-id");
 	}
 
 	function keyPressHandler(event) {
