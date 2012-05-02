@@ -4,8 +4,12 @@
 
 $(function() {
   $("#saveAsDraft").attr('checked', window.localStorage["saveAsDraft"] == "true");
+  $("#pinGroups").attr('checked', window.localStorage["pinGroups"] == "true");
   $("#saveAsDraft").click(function() {
     window.localStorage["saveAsDraft"] = $(this).is(':checked')
+  })
+  $("#pinGroups").click(function() {
+    window.localStorage["pinGroups"] = $(this).is(':checked')
   })
 })
 
