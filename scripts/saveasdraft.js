@@ -18,8 +18,13 @@ $(function() {
 	function keyPressHandler(event) {
 		var target = event.target
 		var draftKey = draftStorageKey(target)
-		localStorage[draftKey] = $(target).val()
-		console.log(draftKey + ": " + $(target).val())
+
+		if (event.shiftKey && event.keyCode === 13) {
+			localStorage.removeItem(draftKey)
+		} else {
+			localStorage[draftKey] = $(target).val()
+			console.log("keypress", event)
+		}
 	}
 
 	$("body").on("click", "a.yj-message-form-submit", function(event) {
