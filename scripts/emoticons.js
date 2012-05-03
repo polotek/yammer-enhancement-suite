@@ -3,6 +3,7 @@
   // these will be converted to something like
   // .emote-%s  
   var sprites = [
+    { token: "=)",      class: "smiley" },
     { token: ":-)",     class: "smiley" },
     { token: ":)",      class: "smiley" },
     { token: ":-(",     class: "sad"    },
@@ -13,8 +14,11 @@
     { token: ":-X",     class: "nervous"},
     { token: ":X",      class: "nervous"},
     { token: ":x",      class: "nervous"},
-    { token: "&lt;3",      class: "heart"  },
-    { token: "&lt;/3",    class: "brokenheart" }
+    { token: "&lt;3",   class: "heart"  },
+    { token: "&lt;/3",  class: "brokenheart" },
+    { token: ":P",      class: "goofy"  },
+    { token: ":-P",     class: "goofy"  },
+    { token: "=P",      class: "goofy"  },
   ],
   fixToken = function(token) {
     return token.replace(")", "\\)").replace("(", "\\(");
