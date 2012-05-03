@@ -32,7 +32,6 @@
 					text = text.replace(sprites[i].regex, sprites[i].html);
 				}
 
-				console.log("resetting to ", text);
 				if(originalLength !== text.length)
 					self.html(text);
 			});

@@ -9,7 +9,6 @@
 
 		// sometimes this isn't around when on document.ready
 		setTimeout(function() {
-			console.log(getWrapper());
 			getWrapper().remove()
 		}, 500);
 

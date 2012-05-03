@@ -31,14 +31,13 @@
 			var id = id.toString();
 			if (this.groups.indexOf(id) >= 0) return;
 
-			console.log('added to storage - ', id);
 			this.groups.push(id);
 			this.saveToStorage();
 		},
 		remove: function(id) {
 			var id = id.toString();
+			
 			this.groups.splice(this.groups.indexOf(id), 1);
-			console.log(this.groups);
 			this.saveToStorage();
 		}
 	};
