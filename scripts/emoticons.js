@@ -47,7 +47,7 @@
         if(originalLength !== text.length)
           self.html(text);
       });
-    }, 1000)
+    }, 250)
   })
 
 })(jQuery);
