@@ -21,7 +21,8 @@
       "matches": [
         "https://www.staging.yammer.com/*",
         "https://www.thunderdome.yammer.com/*",
-        "https://www.yammer.com/*"
+        "https://www.yammer.com/*",
+        "https://www.yammer.dev/*"
       ],
       "css": ["stylesheets/yammer.css"],
       "js": [
