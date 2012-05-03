@@ -30,6 +30,7 @@
         "scripts/groupstorage.js", 
         "scripts/group_pinner.js",
         "scripts/saveasdraft.js",
+        "scripts/emoticons.js",
         "scripts/removegettingstarted.js"
       ]
     }
