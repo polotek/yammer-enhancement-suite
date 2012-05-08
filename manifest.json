@@ -5,8 +5,7 @@
   "description": "Makes Yams Even More Tasty",
   "browser_action": {
     "default_icon": "images/icon.png",
-    "default_title": "Enhance the Yammer experience",
-    "default_popup": "popup.html"
+    "default_title": "Enhance the Yammer experience"
   },
   "icons": {
     "128": "images/Logo_128x128.png"
@@ -33,8 +32,7 @@
         "scripts/group_pinner.js",
         "scripts/saveasdraft.js",
         "scripts/emoticons.js",
-        "scripts/removegettingstarted.js",
-        "scripts/likes.js"
+        "scripts/removegettingstarted.js"
       ]
     }
   ]
