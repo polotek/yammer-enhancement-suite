@@ -1,3 +1,7 @@
+#getting-started-wrapper {
+	display: none;
+}
+
 .group-pin-icon {
 	/* hackeroo the background position because we're too lazy to remove the existing group icon */	
 	background-position: 0 0 !important;
