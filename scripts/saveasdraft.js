@@ -12,7 +12,7 @@ $(function() {
 	}
 
 	function draftStorageKey(el) {
-		return "drafts_" + networkId + ":" + currentFeedId() + ":" + $(el).parents(".yj-message-form-container").find("form").data("yamjs-id");
+		return "drafts_" + networkId + ":" + currentFeedId() + ":" + $(el).parents(".yj-thread-list-item").data("thread-id");
 	}
 
 	function removeDraft(key) {
