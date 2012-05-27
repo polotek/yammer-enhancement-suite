@@ -3,9 +3,10 @@
   "version": "1.0",
   "manifest_version": 2,
   "description": "Makes Yams Even More Tasty",
-  "browser_action": {
+  "page_action": {
     "default_icon": "images/icon.png",
-    "default_title": "Enhance the Yammer experience"
+    "default_title": "Enhance the Yammer experience",
+    "default_popup": "popup.html"
   },
   "icons": {
     "128": "images/Logo_128x128.png"
