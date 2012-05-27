@@ -14,7 +14,10 @@
     "tabs"
   ],
   "background": {
-    "scripts": ["scripts/background.js"]
+    "scripts": [
+      "scripts/utils.js",
+      "scripts/background.js"
+    ]
   },
   "content_scripts": [
     {
