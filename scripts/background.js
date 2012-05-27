@@ -1,27 +1,27 @@
-var bg = {
-  settings: {
+var yes = {
+  _settings: {
     debug: true
   }
   , init: function() {
     // Listen for any changes to the URL of any tab.
-    chrome.tabs.onUpdated.addListener(bg.onTabUpdate);
+    chrome.tabs.onUpdated.addListener(this.onTabUpdate);
   }
   , set: function(settings) {
     var key, val;
     if(typeof settings === 'string') {
       key = settings;
       val = arguments[1];
-      this.settings[key] = val;
+      this._settings[key] = val;
     } else {
-      utils.mixin(this.settings, settings);
+      utils.mixin(this._settings, settings);
     }
-    return this.settings;
+    return this._settings;
   }
   , get: function(key) {
-    return this.settings[key];
+    return this._settings[key];
   }
   , getSettings: function() {
-    return utils.mixin({}, this.settings);
+    return utils.mixin({}, this._settings);
   }
   // Called when the url of a tab changes.
   , checkForValidUrl: function (tabId, tab) {
@@ -35,10 +35,10 @@ var bg = {
   }
   , onTabUpdate: function(tabId, changeInfo, tab) {
     if(this.checkForValidUrl(tabId, tab)) {
-
+      chrome.pageAction.show(tabId);
     }
   }
 };
 
-utils.bindAll(bg);
-bg.init();
+utils.bindAll(yes);
+yes.init();

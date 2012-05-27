@@ -56,6 +56,9 @@ var utils = {
     script.src = src;
     document.head.appendChild(script);
   }
+  , getYES: function() {
+    return chrome.extension.getBackgroundPage().yes;
+  }
   , permissions: function() {
     var perms = []
       , cur = ['chrome'];
