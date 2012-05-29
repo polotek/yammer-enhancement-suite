@@ -21,6 +21,7 @@ var utils = {
       return cb(data);
     };
   }
+  , noop: function() {}
   , execInPage: function(fn, cb) {
     var evalStr = this._getEvalStr(fn)
       , callback = this._getCallback(cb);
@@ -59,44 +60,34 @@ var utils = {
   , getYES: function() {
     return chrome.extension.getBackgroundPage().yes;
   }
-  , permissions: function() {
-    var perms = []
-      , cur = ['chrome'];
-    var recurse = function(obj) {
-      for(var k in obj) {
-        if(['test', 'i18n'].indexOf(k) > -1) { continue; }
-        cur.push(k);
-        perms.push(cur.join('.'));
-        if(obj[k]) {
-          if(typeof obj[k] === 'object') {
-            try {
-              recurse(obj[k]);
-            } catch(e) {}
-          }
-        } else {
-          perms[perms.length-1] += '=NULL';
-        }
-        cur.pop();
+  , _handler: function(req, cb) {
+    if(typeof cb !== 'function') { cb = utils.noop; }
+
+    return function(res) {
+      if(!res) {
+        console.error('no response: ' + req.type);
+        return cb();
+      } else if(res.error) {
+        console.error('error response: ' + res.error);
+        return cb();
       }
-      if(obj.__proto__ && obj.__proto__.toString !== Object.prototype.toString) {
-        recurse(obj.__proto__);
-      }
+
+      return cb(res.data);
     };
-    recurse(chrome);
-    return perms.join('\n');
   }
   , ext: {
     sendRequest: function(req, cb) {
-      chrome.extension.sendRequest(req, function(res) {
-        if(!res) {
-          console.log('no response: ' + req.type);
-          return cb();
-        } else if(res.error) {
-          console.error('error response: ' + res.error);
-          return cb();
-        }
+      chrome.extension.sendRequest(req, utils._handler(req, cb));
+    }
+  }
+  , page: {
+    sendRequest: function(req, cb) {
+      cb = utils._handler(req, cb);
 
-        return cb(res.data);
+      chrome.tabs.getSelected(null, function(tab) {
+        if(!tab) { return; }
+
+        chrome.tabs.sendRequest(tab.id, req, cb);
       });
     }
   }
