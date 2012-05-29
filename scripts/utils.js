@@ -1,5 +1,8 @@
 var utils = {
-  _getEvalStr: function(fn) {
+  init: function() {
+    chrome.extension.onRequest.addListener(utils.page._onRequest);
+  }
+  , _getEvalStr: function(fn) {
     return '(function(yam) {' +
       'var fn = ' + fn.toString() + ';' +
       'var data = fn(yam);' +
@@ -90,10 +93,26 @@ var utils = {
         chrome.tabs.sendRequest(tab.id, req, cb);
       });
     }
+    , _onRequest: function(req, sender, cb) {
+      cb = utils._handler(cb);
+
+      if(sender.tab || !req.type) { return cb(); }
+
+      var res = { type: req.type };
+      if(req.type === 'settings_update') {
+        $(document).trigger('yes::' + req.type, req.data);
+      } else {
+        res.error = "bad request: " + req.type;
+      }
+
+      return cb(res);
+    }
   }
 };
 utils.bindAll(utils.ext);
+utils.bindAll(utils.page);
 utils.bindAll(utils);
+utils.init();
 
 if(typeof console === 'undefined') {
   console = {
