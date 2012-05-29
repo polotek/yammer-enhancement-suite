@@ -15,13 +15,16 @@ var yes = {
     } else {
       utils.mixin(this._settings, settings);
     }
-    return this._settings;
+    this.saveSettings();
   }
   , get: function(key) {
     return this._settings[key];
   }
   , getSettings: function() {
     return utils.mixin({}, this._settings);
+  }
+  , saveSettings: function() {
+    this.storage.set('settings', this._settings);
   }
   // Called when the url of a tab changes.
   , checkForValidUrl: function (tabId, tab) {
@@ -38,6 +41,7 @@ var yes = {
       chrome.pageAction.show(tabId);
     }
   }
+  , storage: new Storage('yes')
 };
 
 utils.bindAll(yes);
