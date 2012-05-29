@@ -59,10 +59,14 @@
     , init: function() {
       var self = this;
 
-      $(function() {
-        self._initSprites();
+      self._initSprites();
 
-        setInterval(self.enhanceEmoticons, 250);
+      utils.ext.sendRequest({
+        type: 'getSettings'
+      }, function(settings) {
+        if(settings.enhanceEmoticons) {
+          $(self.start);
+        }
       });
     }
   };
