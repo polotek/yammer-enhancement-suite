@@ -1,7 +1,13 @@
 var yes = utils.getYES();
 yes.popup = {
-  $inputs: $('#settings').find(':input')
+  $inputs: $('#form').find(':input')
+  , $form: $('#form')
   , init: function() {
+    this.$form.submit(function(ev) {
+      ev.preventDefault();
+      return false;
+    });
+
     this.$inputs.each(function(i, input) {
       var $input = $(input);
       if($input.attr('type') === 'checkbox') {
