@@ -5,6 +5,7 @@ var yes = {
   , init: function() {
     // Listen for any changes to the URL of any tab.
     chrome.tabs.onUpdated.addListener(this.onTabUpdate);
+    chrome.extension.onRequest.addListener(this.onRequest);
   }
   , set: function(settings) {
     var key, val;
@@ -40,6 +41,18 @@ var yes = {
     if(this.checkForValidUrl(tabId, tab)) {
       chrome.pageAction.show(tabId);
     }
+  }
+  , onRequest: function(req, sender, cb) {
+    if(!sender.tab || !req.type) { return cb(); }
+
+    var res = { type: req.type };
+    if(req.type === 'getSettings') {
+      res.data = this.getSettings();
+    } else {
+      res.error = "bad request: " + req.type;
+    }
+
+    return cb(res);
   }
   , storage: new Storage('yes')
 };
