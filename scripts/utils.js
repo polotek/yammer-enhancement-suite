@@ -21,7 +21,7 @@ var utils = {
       return cb(data);
     };
   }
-  , exec: function(fn, cb) {
+  , execInPage: function(fn, cb) {
     var evalStr = this._getEvalStr(fn)
       , callback = this._getCallback(cb);
     return chrome.devtools.inspectedWindow.eval(evalStr, callback);
@@ -85,7 +85,23 @@ var utils = {
     recurse(chrome);
     return perms.join('\n');
   }
+  , ext: {
+    sendRequest: function(req, cb) {
+      chrome.extension.sendRequest(req, function(res) {
+        if(!res) {
+          console.log('no response: ' + req.type);
+          return cb();
+        } else if(res.error) {
+          console.error('error response: ' + res.error);
+          return cb();
+        }
+
+        return cb(res.data);
+      });
+    }
+  }
 };
+utils.bindAll(utils.ext);
 utils.bindAll(utils);
 
 if(typeof console === 'undefined') {
