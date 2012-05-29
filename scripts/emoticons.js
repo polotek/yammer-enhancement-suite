@@ -31,6 +31,13 @@
         sprite.html = "<span class=\"enhance-emote enhance-emote" + sprite.class + "\" alt=\"" + sprite.class + "\" /></span>";
       }
     }
+    , start: function() {
+      this.enhanceEmoticons();
+      this._interval = setInterval(this.enhanceEmoticons, 250);
+    }
+    , stop: function() {
+      clearInterval(this._interval);
+    }
     , enhanceEmoticons: function() {
       var self = this;
       $('span.yj-message:not(.smiled)').each(function(idx, el) {
