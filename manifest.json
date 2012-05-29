@@ -32,6 +32,7 @@
       "css": ["stylesheets/yammer.css"],
       "js": [
         "scripts/jquery.min.js", 
+        "scripts/utils.js",
         "scripts/yammer.js",
         "scripts/groupstorage.js", 
         "scripts/group_pinner.js",
