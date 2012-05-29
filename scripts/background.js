@@ -8,15 +8,18 @@ var yes = {
     chrome.extension.onRequest.addListener(this.onRequest);
   }
   , set: function(settings) {
-    var key, val;
+    var key, val, changes = settings;
     if(typeof settings === 'string') {
       key = settings;
       val = arguments[1];
       this._settings[key] = val;
+      changes = {};
+      changes[key] = val;
     } else {
       utils.mixin(this._settings, settings);
     }
     this.saveSettings();
+    this.emitSettingsUpdate(changes);
   }
   , get: function(key) {
     return this._settings[key];
@@ -36,6 +39,16 @@ var yes = {
         return true;
     }
     return false;
+  }
+  , emitSettingsUpdate: function(changes) {
+    var req = {
+      type: 'settings_update'
+      , data: {
+        settings: this.getSettings()
+        , changes: changes
+      }
+    };
+    utils.page.sendRequest(req);
   }
   , onTabUpdate: function(tabId, changeInfo, tab) {
     if(this.checkForValidUrl(tabId, tab)) {
