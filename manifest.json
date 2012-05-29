@@ -28,9 +28,7 @@
       "js": [
         "scripts/jquery.min.js", 
         "scripts/yammer.js",
-        "scripts/groupstorage.js", 
-        "scripts/group_pinner.js",
-        "scripts/saveasdraft.js",
+        "scripts/group-expander.js",
         "scripts/emoticons.js"
       ]
     }
