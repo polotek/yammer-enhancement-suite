@@ -1,6 +1,9 @@
 var utils = {
   init: function() {
-    chrome.extension.onRequest.addListener(utils.page._onRequest);
+    if(typeof yes === 'undefined') {
+      // in content script
+      chrome.extension.onRequest.addListener(utils.page._onRequest);
+    }
   }
   , _getEvalStr: function(fn) {
     return '(function(yam) {' +
@@ -94,9 +97,9 @@ var utils = {
       });
     }
     , _onRequest: function(req, sender, cb) {
-      cb = utils._handler(cb);
-
-      if(sender.tab || !req.type) { return cb(); }
+      if(!req.type || sender.tab.id !== -1) {
+        return;
+      }
 
       var res = { type: req.type };
       if(req.type === 'settings_update') {

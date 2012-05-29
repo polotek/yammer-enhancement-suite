@@ -43,7 +43,9 @@ var yes = {
     }
   }
   , onRequest: function(req, sender, cb) {
-    if(!sender.tab || !req.type) { return cb(); }
+    if(!req.type || sender.tab.id === -1) {
+      return;
+    }
 
     var res = { type: req.type };
     if(req.type === 'get_settings') {
