@@ -20,6 +20,21 @@
       { token: ":-P",     class: "goofy"  },
       { token: "=P",      class: "goofy"  },
     ]
+    , init: function() {
+      var self = this;
+
+      self._initSprites();
+
+      $(document).bind('yes::settings_update', self.onSettingsUpdate);
+
+      utils.ext.sendRequest({
+        type: 'get_settings'
+      }, function(settings) {
+        if(settings.enhanceEmoticons) {
+          $(self.start);
+        }
+      });
+    }
     , _fixToken: function(token) {
       return token.replace(")", "\\)").replace("(", "\\(");
     }
@@ -56,18 +71,14 @@
         }
       });
     }
-    , init: function() {
-      var self = this;
-
-      self._initSprites();
-
-      utils.ext.sendRequest({
-        type: 'get_settings'
-      }, function(settings) {
-        if(settings.enhanceEmoticons) {
-          $(self.start);
+    , onSettingsUpdate: function(ev, data) {
+      if(data && 'enhanceEmoticons' in data.changes) {
+        if(data.changes.enhanceEmoticons) {
+          this.start();
+        } else {
+          this.stop();
         }
-      });
+      }
     }
   };
 
