@@ -62,7 +62,7 @@
       self._initSprites();
 
       utils.ext.sendRequest({
-        type: 'getSettings'
+        type: 'get_settings'
       }, function(settings) {
         if(settings.enhanceEmoticons) {
           $(self.start);

@@ -46,7 +46,7 @@ var yes = {
     if(!sender.tab || !req.type) { return cb(); }
 
     var res = { type: req.type };
-    if(req.type === 'getSettings') {
+    if(req.type === 'get_settings') {
       res.data = this.getSettings();
     } else {
       res.error = "bad request: " + req.type;
