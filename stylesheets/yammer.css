@@ -23,6 +23,10 @@
 	margin-bottom: 4px !important;
 }
 
+.smiled .enhance-emote {
+	text-indent: -100px;
+	overflow: hidden;
+}
 
 /* http://inner.geek.nz/wp-content/uploads/2009/02/iphone-emoji1.png */
 .enhance-emote {

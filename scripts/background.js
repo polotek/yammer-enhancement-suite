@@ -11,7 +11,7 @@ var yes = {
     var key, val, changes = settings;
     if(typeof settings === 'string') {
       key = settings;
-      val = arguments[1];
+      val = arguments[1] === undefined ? null : arguments[1];
       this._settings[key] = val;
       changes = {};
       changes[key] = val;

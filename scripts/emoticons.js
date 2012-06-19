@@ -43,7 +43,7 @@
       for(var i = 0, ii = this.sprites.length; i < ii; i++) {
         sprite = this.sprites[i];
         sprite.regex = new RegExp(this._fixToken(sprite.token), "g");
-        sprite.html = "<span class=\"enhance-emote enhance-emote" + sprite.class + "\" alt=\"" + sprite.class + "\" /></span>";
+        sprite.html = "<span class=\"emoticon enhance-emote enhance-emote" + sprite.class + "\" alt=\"" + sprite.class + "\">{{text}}</span>";
       }
     }
     , start: function() {
@@ -51,10 +51,15 @@
       this._interval = setInterval(this.enhanceEmoticons, 250);
     }
     , stop: function() {
+      $('span.yj-message.smiled .emoticon').removeClass('enhance-emote');
+
       clearInterval(this._interval);
     }
     , enhanceEmoticons: function() {
       var self = this;
+
+      $('span.yj-message.smiled .emoticon').addClass('enhance-emote');
+
       $('span.yj-message:not(.smiled)').each(function(idx, el) {
         var $el = $(el).addClass('smiled') 
           , sprite
@@ -63,7 +68,9 @@
 
         for(var i = 0, len = self.sprites.length; i < len; i++) {
           sprite = self.sprites[i];
-          text = text.replace(sprite.regex, sprite.html);
+          text = text.replace(sprite.regex, function(str) {
+            return sprite.html.replace('{{text}}', str);
+          });
         }
 
         if(originalLength !== text.length) {
